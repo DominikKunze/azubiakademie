@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="de" xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Azubiakademie Vorträge</title>
+		<meta charset="utf8">
+		
+		<!-- JQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!-- Das neueste kompilierte und minimierte CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<!-- Optionales Theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+		<!-- Das neueste kompilierte und minimierte JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
+		<!-- CSS -->
+		<link rel="stylesheet" href="../../style.css">
+	</head>
+	<body>
+		<div th:replace="fragments/menu.html">
+			Menu couldn't load!
+		</div>
+		
+		
+		
+		<div class="container" style="border: 1px solid lightgray;">
+			<h3>Neuen Eintrag erstellen</h3>
+			<form method="post" action="/api/add">
+				<div class="form-group">
+					<label for="date">Datum</label>
+					<input type="date" class="form-control" id="date" name="date" placeholder="Datum">
+				</div>
+				<label for="speaker1">Referat 1</label>
+				<div class="form-inline">
+					<div class="form-group">
+						<input type="text" class="form-control" name="speaker1" id="speaker1" placeholder="Referent">
+						<input type="text" class="form-control" name="topic1" placeholder="Thema">
+					</div>
+				</div>
+				<label for="speaker2">Referat 2</label>
+				<div class="form-inline">
+					<div class="form-group">
+						<input type="text" class="form-control" name="speaker2" id="speaker2" placeholder="Referent">
+						<input type="text" class="form-control" name="topic2" placeholder="Thema">
+					</div>
+				</div>
+				<label for="speaker3">Referat 3</label>
+				<div class="form-inline">
+					<div class="form-group">
+						<input type="text" class="form-control" name="speaker3" id="speaker3" placeholder="Referent">
+						<input type="text" class="form-control" name="topic3" placeholder="Thema">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="comment">Bemerkung</label>
+					<textarea class="form-control" id="comment" name="comment" placeholder="Bemerkung"></textarea>
+				</div>
+				<button class="btn btn-success" value="add" name="button">Hinzufügen</button>
+			</form> 
+		</div> 
+	</body> 
+</html>

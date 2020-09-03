@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html lang="de" xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Azubiakademie Vorträge</title>
+		<meta charset="utf8">
+		
+		<!-- JQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!-- Das neueste kompilierte und minimierte CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<!-- Optionales Theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+		<!-- Das neueste kompilierte und minimierte JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
+		<!-- CSS -->
+		<link rel="stylesheet" href="../../style.css">
+	</head>
+	<body>
+		<div th:replace="fragments/menu.html">
+			Menu couldn't load!
+		</div>
+
+		<div class="container" style="border: 1px solid lightgray;">
+			<h3>Eintrag bearbeiten</h3>
+			<form method="post" action="/api/edit">
+				<div class="form-group">
+					<label for="date">Datum</label>
+					<input th:disabled="${!api_rules.editDate}" type="date" class="form-control" id="date" name="date" placeholder="Datum" th:value="${pres.date}">
+				</div>
+				<label for="speaker1">Referat 1</label>
+				<div class="form-inline">
+					<div class="form-group">
+						<input th:disabled="${!api_rules.editSpeaker}" type="text" class="form-control" name="speaker1" id="speaker1" placeholder="Referent" th:value="${pres.speaker1}">
+						<input th:disabled="${!api_rules.editTopic}" type="text" class="form-control" name="topic1" placeholder="Thema" th:value="${pres.topic1}">
+						<select class="form-control" name="status1" th:disabled="${!api_rules.editStatus}">
+							<option value="0" th:selected="${pres.status1==0}">Ausstehend</option>
+							<option value="1" th:selected="${pres.status1==1}">Vorgetragen</option>
+							<option value="2" th:selected="${pres.status1==2}">Nicht vorgetragen</option>
+						</select>
+					</div>
+				</div>
+				<label for="speaker2">Referat 2</label>
+				<div class="form-inline">
+					<div class="form-group">
+						<input th:disabled="${!api_rules.editSpeaker}" type="text" class="form-control" name="speaker2" id="speaker2" placeholder="Referent" th:value="${pres.speaker2}">
+						<input th:disabled="${!api_rules.editTopic}" type="text" class="form-control" name="topic2" placeholder="Thema" th:value="${pres.topic2}">
+						<select class="form-control" name="status2" th:disabled="${!api_rules.editStatus}">
+							<option value="0" th:selected="${pres.status2==0}">Ausstehend</option>
+							<option value="1" th:selected="${pres.status2==1}">Vorgetragen</option>
+							<option value="2" th:selected="${pres.status2==2}">Nicht vorgetragen</option>
+						</select>
+					</div>
+				</div>
+				<label for="speaker3">Referat 3</label>
+				<div class="form-inline">
+					<div class="form-group">
+						<input th:disabled="${!api_rules.editSpeaker}" type="text" class="form-control" name="speaker3" id="speaker3" placeholder="Referent" th:value="${pres.speaker3}">
+						<input th:disabled="${!api_rules.editTopic}" type="text" class="form-control" name="topic3" placeholder="Thema" th:value="${pres.topic3}">
+						<select class="form-control" name="status3" th:disabled="${!api_rules.editStatus}">
+							<option value="0" th:selected="${pres.status3==0}">Ausstehend</option>
+							<option value="1" th:selected="${pres.status3==1}">Vorgetragen</option>
+							<option value="2" th:selected="${pres.status3==2}">Nicht vorgetragen</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="comment">Bemerkung</label>
+					<textarea th:disabled="${!api_rules.editComment}" class="form-control" id="comment" name="comment" placeholder="Bemerkung" th:text="${pres.comment}"></textarea>
+				</div>
+				<input type="hidden" name="id" th:value="${pres.id}">
+				<button class="btn btn-success" value="add" name="button">Bearbeiten</button>
+			</form>
+		</div>
+	</body>
+</html>

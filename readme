@@ -1,0 +1,15 @@
+! WICHTIG !
+
+Beim bearbeiten des Projektes könnte es zu Fehlern kommen. 
+Bitte darauf achten, dass bei IntelliJ das Lombok Plugin installiert ist, da das Proramm sonst die @Getter und @Setter nicht richtig erkennt.
+
+---------------------------------
+
+Die Datei "application.properties" müssen die Datenbankverbindungen angegeben werden, sonst kommt es zu Fehlern.
+
+---------------------------------
+
+Information:
+Das Projekt ist NICHT komplett fertig, es fehlt die LDAP Anbindung sowie der geplante E-Mail Reminder.
+Es ist erlaubt, das Projekt nach belieben selber zu verändern oder zu erweitern.
+Bitte nicht an Externe weitergeben, das Projekt ist ausschließlich für den internen Gebrauch gedacht.

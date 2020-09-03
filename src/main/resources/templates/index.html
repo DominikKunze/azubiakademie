@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="de" xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Azubiakademie Vorträge</title>
+		<meta charset="utf8">
+		
+		<!-- JQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!-- Das neueste kompilierte und minimierte CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<!-- Optionales Theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+		<!-- Das neueste kompilierte und minimierte JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
+		<!-- CSS -->
+		<link rel="stylesheet" href="../../style.css">
+	</head>
+	<body>
+		<div th:replace="fragments/menu.html">
+			Menu couldn't load!
+		</div>
+
+		<div th:if="${success}" class="alert alert-success">
+			<span class="glyphicon glyphicon-ok"></span> <b th:text="${success}"></b>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Schließen">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div th:if="${failed}" class="alert alert-danger">
+			<span class="glyphicon glyphicon-remove"></span> <b th:text="${failed}"></b>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Schließen">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+		<div class="container" style="border: 1px solid lightgray;">
+			<table class="table table-striped">
+				<tr>
+					<th>Datum</th>
+					<th>Referent 1</th>
+					<th>Thema 1</th>
+					<th>Referent 2</th>
+					<th>Thema 2</th>
+					<th>Referent 3</th>
+					<th>Thema 3</th>
+					<th>Bemerkung</th>
+					<th></th>
+				</tr>
+				<tr th:each="pres : ${allPresentations}">
+					<td th:text="${pres.date}"></td>
+					<td th:text="${pres.speaker1}" th:classappend="${pres.status1==1}? 'success' : (${pres.status1==2} ? 'danger')"></td>
+					<td th:text="${pres.topic1}" th:classappend="${pres.status1==1}? 'success' : (${pres.status1==2} ? 'danger')"></td>
+					<td th:text="${pres.speaker2}" th:classappend="${pres.status2==1}? 'success' : (${pres.status2==2} ? 'danger')"></td>
+					<td th:text="${pres.topic2}" th:classappend="${pres.status2==1}? 'success' : (${pres.status2==2} ? 'danger')"></td>
+					<td th:text="${pres.speaker3}" th:classappend="${pres.status3==1}? 'success' : (${pres.status3==2} ? 'danger')"></td>
+					<td th:text="${pres.topic3}" th:classappend="${pres.status3==1}? 'success' : (${pres.status3==2} ? 'danger')"></td>
+					<td th:test="${pres.comment}"></td>
+					<td>
+						<a th:if="${api_rules.edit}" class="btn btn-warning" role="button" th:href="'/page/'+${pres.id}+'/edit'"><span class="glyphicon glyphicon-pencil"></span></a>
+						<a th:if="${!api_rules.edit}" disabled class="btn btn-warning" role="button"><span class="glyphicon glyphicon-pencil"></span></a>
+						<a th:if="${api_rules.delete}" class="btn btn-danger" role="button" onclick="return confirm('Möchten Sie den Eintrag wirklich löschen?');" th:href="'/api/'+${pres.id}+'/delete'"><span class="glyphicon glyphicon-remove"></span></a>
+						<a th:if="${!api_rules.delete}" disabled class="btn btn-danger" role="button"><span class="glyphicon glyphicon-remove"></span></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

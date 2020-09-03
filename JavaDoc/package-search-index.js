@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.unitedinternet.azubiakademie"},{"l":"com.unitedinternet.azubiakademie.boundary"},{"l":"com.unitedinternet.azubiakademie.config"},{"l":"com.unitedinternet.azubiakademie.libary"},{"l":"com.unitedinternet.azubiakademie.model"},{"l":"com.unitedinternet.azubiakademie.services.data"}]
